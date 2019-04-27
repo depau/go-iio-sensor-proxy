@@ -22,7 +22,7 @@ type SensorProxy interface {
 
 func NewSensorProxyFromBus(systemBus *dbus.Conn) (SensorProxy, error) {
 	s := new(sensorProxy)
-	s.busObject = systemBus.Object("net.hadess.sensorProxy", "/net/hadess/sensorProxy")
+	s.busObject = systemBus.Object("net.hadess.SensorProxy", "/net/hadess/SensorProxy")
 	return s, nil
 }
 
@@ -54,37 +54,37 @@ func (s *sensorProxy) getFloat64Property(property string) (value float64, err er
 }
 
 func (s *sensorProxy) HasAccelerometer() (hasAccelerometer bool, err error) {
-	return s.getBoolProperty("net.hadess.sensorProxy.HasAccelerometer")
+	return s.getBoolProperty("net.hadess.SensorProxy.HasAccelerometer")
 }
 
 func (s *sensorProxy) HasAmbientLight() (hasAmbientLight bool, err error) {
-	return s.getBoolProperty("net.hadess.sensorProxy.HasAmbientLight")
+	return s.getBoolProperty("net.hadess.SensorProxy.HasAmbientLight")
 }
 
 func (s *sensorProxy) ClaimAccelerometer() error {
-	return s.busObject.Call("net.hadess.sensorProxy.ClaimAccelerometer", 0).Err
+	return s.busObject.Call("net.hadess.SensorProxy.ClaimAccelerometer", 0).Err
 }
 
 func (s *sensorProxy) ClaimAmbientLight() error {
-	return s.busObject.Call("net.hadess.sensorProxy.ClaimLight", 0).Err
+	return s.busObject.Call("net.hadess.SensorProxy.ClaimLight", 0).Err
 }
 
 func (s *sensorProxy) ReleaseAccelerometer() error {
-	return s.busObject.Call("net.hadess.sensorProxy.ReleaseAccelerometer", 0).Err
+	return s.busObject.Call("net.hadess.SensorProxy.ReleaseAccelerometer", 0).Err
 }
 
 func (s *sensorProxy) ReleaseAmbientLight() error {
-	return s.busObject.Call("net.hadess.sensorProxy.ReleaseLight", 0).Err
+	return s.busObject.Call("net.hadess.SensorProxy.ReleaseLight", 0).Err
 }
 
 func (s *sensorProxy) GetAccelerometerOrientation() (accelOrientation string, err error) {
-	return s.getStringProperty("net.hadess.sensorProxy.AccelerometerOrientation")
+	return s.getStringProperty("net.hadess.SensorProxy.AccelerometerOrientation")
 }
 
 func (s *sensorProxy) GetLightLevel() (lightLevel float64, err error) {
-	return s.getFloat64Property("net.hadess.sensorProxy,LightLevel")
+	return s.getFloat64Property("net.hadess.SensorProxy,LightLevel")
 }
 
 func (s *sensorProxy) GetLightLevelUnit() (lightLevelUnit string, err error) {
-	return s.getStringProperty("net.hadess.sensorProxy.LightLevelUnit")
+	return s.getStringProperty("net.hadess.SensorProxy.LightLevelUnit")
 }
