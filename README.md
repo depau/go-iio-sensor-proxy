@@ -24,7 +24,7 @@ if err != nil {
 Get an instance of the sensor proxy:
 
 ```go
-sensorProxy, err := NewSensorProxyFromBus(conn)
+sensorProxy, err := sensorproxy.NewSensorProxyFromBus(conn)
 if err != nil {
     log.Fatal(err)
 }
